@@ -1,14 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import useEvent from "../../hooks/useEvent";
 
 const Event = () => {
-  const [events, setEvents] = useState([]);
-  useEffect(() => {
-    fetch("event.json")
-      .then((res) => res.json())
-      .then((data) => setEvents(data));
-  }, []);
+  const [events] = useEvent([]);
+
   return (
     <div className="grid grid-cols-3 m-4">
       {events.map((event) => (

@@ -1,11 +1,30 @@
 import React from "react";
 import { useState } from "react";
+import useEvent from "../../hooks/useEvent";
 import Event from "./Event";
 
 const Home = () => {
   const [price, setPrice] = useState(0);
   const [age, setAge] = useState(0);
+  const [location, setLocation] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [games, setGames] = useState([]);
+
+  const [events] = useEvent();
+  const ageRanges = new Set(events.map((event) => event.ageRange));
+  const locations = new Set(events.map((event) => event.location));
+  const typesOfGame = new Set(events.map((event) => event.type));
+  const nameOfGame = new Set(events.map((event) => event.name));
+  const priceRange = new Set(events.map((event) => event.priceRange));
+  setLocation([...locations]);
+  setAge([...ageRanges]);
+  setTypes([...typesOfGame]);
+  setGames([...nameOfGame]);
+  setPrice([...priceRange]);
   const rangeHandler = (event) => {
+    const price = event.target.value;
+    const filtedByPrice = events.filter((event) => event.priceMoney <= price);
+    console.log(filtedByPrice);
     setPrice(event.target.value);
   };
   const ageHandler = (event) => {
