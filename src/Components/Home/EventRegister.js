@@ -1,11 +1,52 @@
 import React from "react";
 
-const EventRegister = () => {
+const EventRegister = ({ eventId }) => {
+  const registerHandler = (event) => {
+    event.preventDefault();
+    console.log(eventId);
+    const firstName = event.target.fname.value;
+    const lastName = event.target.lname.value;
+    const email = event.target.email.value;
+    const userPhone = event.target.phone.value;
+    const guardianName = event.target.guardianName.value;
+    const guardianPhone = event.target.guardianPhone.value;
+    const guardianEmail = event.target.guardianEmail.value;
+    const relation = event.target.relationship.value;
+    const birthDate = event.target.birthDate.value;
+    const gender = event.target.gender.value;
+    const institution = event.target.institution.value;
+    const grade = event.target.grade.value;
+    const username = `${firstName} ${lastName}`;
+    const userInfo = {
+      username,
+      email,
+      userPhone,
+      eventId,
+      guardianName,
+      guardianEmail,
+      guardianPhone,
+      relation,
+      birthDate,
+      gender,
+      institution,
+      grade,
+      isRegister: true,
+    };
+    fetch("http://localhost:8000/event-register", {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("register successful", data));
+  };
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-96 bg-base-100 shadow-xl mx-auto">
       <div className="card-body">
         <h2 className="text-3xl">Register events</h2>
-        <form>
+        <form onSubmit={registerHandler}>
           <label className="block " htmlFor="fname">
             First Name
           </label>
@@ -55,7 +96,7 @@ const EventRegister = () => {
             className="input "
             type="text"
             placeholder=" guardian name"
-            name="guardian-name"
+            name="guardianName"
             id="guardian-name"
           />
           <label className="block" htmlFor="guardian-phone">
@@ -65,7 +106,7 @@ const EventRegister = () => {
             className="input "
             placeholder=" guardian phone"
             type="text"
-            name="guardian-phone"
+            name="guardianPhone"
             id="guardian-phone"
           />
           <label className="block" htmlFor="guardian-email">
@@ -75,7 +116,7 @@ const EventRegister = () => {
             className="input "
             placeholder=" guardian email"
             type="email"
-            name="guardian-email"
+            name="guardianEmail"
             id="guardian-email"
           />
           <label className="block" htmlFor="relationship">
@@ -90,7 +131,7 @@ const EventRegister = () => {
           <label className="block" htmlFor="birth-date">
             Birth Date
           </label>
-          <input type="date" name="birth-date" id="birth-date" />
+          <input type="date" name="birthDate" id="birth-date" />
           <br />
           <input type="radio" name="gender" id="male" value="male" />
           <label htmlFor="male">male</label>
@@ -100,6 +141,14 @@ const EventRegister = () => {
 
           <input type="radio" name="gender" id="other" value="other" />
           <label htmlFor="other">other</label>
+          <h3 className="text-xl">Institutions</h3>
+          <select name="institution" id="">
+            <option>Select institution</option>
+            <option value="school">School</option>
+            <option value="collage">Collage</option>
+          </select>
+          <label htmlFor="grade"> Grade</label>
+          <input type="number" name="grade" placeholder="Grade" id="grade" />
           <input
             type="submit"
             value="submit"

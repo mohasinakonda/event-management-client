@@ -1,15 +1,10 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import useEvent from "../../hooks/useEvent";
 
-const Event = () => {
-  const [events] = useEvent([]);
-
+const Event = ({ events, registerId }) => {
   return (
-    <div className="grid grid-cols-3 m-4">
+    <div className="grid justify-center lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
       {events.map((event) => (
-        <div class="card w-96 bg-base-100 shadow-xl my-3">
+        <div class="card  bg-base-100 shadow-xl m-5">
           <figure>
             <img src={event.photos} alt="Shoes" />
           </figure>
@@ -21,7 +16,14 @@ const Event = () => {
             <p>Price money {event.priceMoney}</p>
 
             <div class="card-actions justify-end">
-              <button class="btn btn-primary">Register</button>
+              <label
+                className="btn"
+                for="register-modal"
+                class="btn modal-button"
+                onClick={() => registerId(event._id)}
+              >
+                Register
+              </label>
             </div>
           </div>
         </div>
