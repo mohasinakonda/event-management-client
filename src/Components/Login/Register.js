@@ -91,7 +91,6 @@ const Register = () => {
               className="input  input-bordered input-primary w-[100%]  "
             />
             <input type="submit" value="submit" className="btn btn-secondary" />
-            <p className="text-error">error</p>
           </form>
           <p className="p-5">
             Already have an account ?{" "}

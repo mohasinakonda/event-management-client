@@ -6,7 +6,10 @@ import Home from "./Components/Home/Home";
 import LoginRegister from "./Components/Login/Index";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Login/Register";
+import RequireAuth from "./Components/Login/RequireAuth";
+import Events from "./Components/Profile/Events";
 import Profile from "./Components/Profile/Profile";
+import UpdateProfile from "./Components/Profile/UpdateProfile";
 import Navbar from "./Components/Shared/Navbar";
 
 function App() {
@@ -14,9 +17,34 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="register" element={<EventRegister />} />
+        <Route
+          path="/"
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <RequireAuth>
+              <Profile />
+            </RequireAuth>
+          }
+        >
+          <Route index element={<Profile />} />
+          <Route path="/profile/events" element={<Events />} />
+          <Route path="/profile/update" element={<UpdateProfile />} />
+        </Route>
+        <Route
+          path="register"
+          element={
+            <RequireAuth>
+              <EventRegister />
+            </RequireAuth>
+          }
+        />
         <Route path="login" element={<LoginRegister />}>
           <Route index element={<Login />}></Route>
 

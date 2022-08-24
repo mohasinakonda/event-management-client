@@ -16,12 +16,16 @@ const Navbar = () => {
       </div>
       <div class="flex-none">
         <ul class="menu menu-horizontal p-0">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
+          {user && (
+            <>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+            </>
+          )}
 
           <li>
             {!user ? (

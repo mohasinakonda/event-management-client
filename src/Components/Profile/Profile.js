@@ -10,6 +10,7 @@ const Profile = () => {
         <div class="drawer-content flex flex-col ">
           {/* <!-- Page content here --> */}
           <ProfileHeader />
+          <Outlet />
           <label
             for="my-drawer-2"
             class="btn btn-primary drawer-button lg:hidden"
@@ -21,11 +22,14 @@ const Profile = () => {
           <label for="my-drawer-2" class="drawer-overlay"></label>
           <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
+            {/* <li>
+              <NavLink to="/profile">Profile</NavLink>
+            </li> */}
             <li>
-              <a>Sidebar Item 1</a>
+              <NavLink to="/profile/events">events</NavLink>
             </li>
             <li>
-              <a>Sidebar Item 2</a>
+              <NavLink to="/profile/update">update Profile</NavLink>
             </li>
           </ul>
         </div>

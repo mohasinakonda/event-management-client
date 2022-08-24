@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-// import Spinner from "../Shared/Spinner";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.config";
-// import auth from "../../firebase.config";
-// import useToken from "../../hooks/useToken";
 const Login = () => {
   const navigate = useNavigate();
-  const [signInWithEmailPassword, user, loading, error] =
+  const [signInWithEmailPassword, user, loading] =
     useSignInWithEmailAndPassword(auth);
 
   const location = useLocation();
