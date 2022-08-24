@@ -1,14 +1,16 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import useEvent from "../../hooks/useEvent";
 import Event from "./Event";
 import Modal from "./Modal";
 
 const Home = () => {
   const [price, setPrice] = useState(0);
   const [age, setAge] = useState(0);
-  const [types, setTypes] = useState([]);
-  const [games, setGames] = useState([]);
+  const [type, setType] = useState([]);
+  const [name, setName] = useState([]);
+  const [city, setCity] = useState([]);
   const [events, setEvent] = useState([]);
   const [result, setResult] = useState([]);
   const [eventId, setEventId] = useState("");
@@ -20,29 +22,29 @@ const Home = () => {
         setResult(data);
       });
   }, []);
-  // console.log(events);
-  // console.log(result);
-  // const [events] = useEvent();
+
   const locations = [...new Set(result.map((event) => event.location))];
   const typesOfGame = [...new Set(result.map((event) => event.type))];
   const nameOfGame = [...new Set(result.map((event) => event.name))];
 
-  const rangeHandler = (event) => {
-    const price = event.target.value;
-    const filteredByPrice = events.filter((event) => event.priceMoney <= price);
-
-    setPrice(filteredByPrice);
-  };
-  const ageHandler = (event) => {
-    setAge(event.target.value);
-  };
   const selectByCity = (event) => {
     const city = event.target.value;
+    setCity(city);
     fetch(`http://localhost:8000/product/${city}`)
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);
       });
+  };
+  const ageHandler = (event) => {
+    const age = event.target.value;
+    const eventByAge = events.filter((event) => event.ageRange === age);
+    setEvent(eventByAge);
+  };
+  const rangeHandler = (event) => {
+    const range = event.target.value;
+    const eventByRange = events.filter((event) => event.ageRange === range);
+    setEvent(eventByRange);
   };
   const handleEventByName = (event) => {
     const eventName = event.target.value;

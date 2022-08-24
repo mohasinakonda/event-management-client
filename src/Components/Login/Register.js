@@ -1,41 +1,40 @@
 import React, { useEffect, useState } from "react";
-// import {
-//   useCreateUserWithEmailAndPassword,
-//   useUpdateProfile,
-// } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import auth from "../../firebase.config";
 // import auth from "../../firebase.config";
 // import useToken from "../../hooks/useToken";
 // import Spinner from "../Shared/Spinner";
 
 const Register = () => {
-  /* const [updateProfile, updating, err] = useUpdateProfile(auth);
+  const [updateProfile, updating, err] = useUpdateProfile(auth);
   const navigate = useNavigate();
-  const [displayName, setUserName] = useState("");
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
-  const [token] = useToken(user, displayName);
-
   useEffect(() => {
-    if (token) {
+    if (user) {
       navigate(from, { replace: true });
     }
-  }, [user, navigate, token, from]);
+  }, [user, navigate, from]);
 
   if (updating || loading) {
-    return <Spinner></Spinner>;
+    return <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24" />;
+  }
+  if (user) {
+    navigate("/");
   }
 
-  const handleName = (event) => {
-    setUserName(event.target.value);
-  };
   let errors;
   if (error) {
     errors = error?.message;
+    return <div>{errors}</div>;
   }
   const handleRegister = async (event) => {
     event.preventDefault();
@@ -46,13 +45,16 @@ const Register = () => {
     await updateProfile({ displayName: name });
     await createUserWithEmailAndPassword(email, password);
     event.target.reset();
-  }; */
+  };
 
   return (
     <div>
       <div className="w-96 mx-auto m-5">
         <div className="card bg-base-100 shadow-xl ">
-          <form className=" grid grid-cols-1 gap-3 mx-auto  w-[100%] px-10">
+          <form
+            onSubmit={handleRegister}
+            className=" grid grid-cols-1 gap-3 mx-auto  w-[100%] px-10"
+          >
             <label htmlFor="name"> Name</label>
             <input
               name="name"
