@@ -6,6 +6,7 @@ import Home from "./Components/Home/Home";
 import LoginRegister from "./Components/Login/Index";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Login/Register";
+import Profile from "./Components/Profile/Profile";
 import Navbar from "./Components/Shared/Navbar";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="register" element={<EventRegister />} />
         <Route path="login" element={<LoginRegister />}>
           <Route index element={<Login />}></Route>

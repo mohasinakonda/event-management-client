@@ -41,9 +41,20 @@ const Register = () => {
     const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-
+    const userInfo = { username: name, email };
     await updateProfile({ displayName: name });
     await createUserWithEmailAndPassword(email, password);
+
+    fetch(`http://localhost:8000/user/`, {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
     event.target.reset();
   };
 
