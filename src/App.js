@@ -37,7 +37,7 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<Profile />} />
+          <Route index element={<Events />} />
           <Route path="/profile/events" element={<Events />} />
           <Route path="/profile/update" element={<UpdateProfile />} />
         </Route>

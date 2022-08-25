@@ -153,7 +153,7 @@ const ProfileHeader = () => {
 
       {/* // INFOS */}
       <div className="flex flex-col mt-5 mb-3.5">
-        <h1 className="text-center font-bold text-3xl">{userInfo.username}</h1>
+        <h1 className=" font-bold text-3xl">{userInfo.username}</h1>
 
         <hr className="full flex self-center w-2/3 mt-2" />
       </div>
