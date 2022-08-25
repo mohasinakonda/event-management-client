@@ -47,112 +47,163 @@ const EventRegister = ({ eventId }) => {
       <div className="card-body">
         <h2 className="text-3xl">Register events</h2>
         <form onSubmit={registerHandler}>
-          <label className="block " htmlFor="fname">
+          <label className="label uppercase " htmlFor="fname">
             First Name
           </label>
           <input
-            className="input"
-            placeholder=" first name"
+            className="input input-border input-primary w-full"
+            placeholder=" First name"
             type="text"
             name="fname"
             id="fname"
           />
 
-          <label className="block" htmlFor="lname">
+          <label className="label uppercase" htmlFor="lname">
             Last Name
           </label>
           <input
-            className="input "
-            placeholder=" last name"
+            className="input input-border input-primary w-full"
+            placeholder=" Last name"
             type="lname"
             name="lname"
             id="lname"
           />
-          <label className="block" htmlFor="email">
+          <label className="label uppercase" htmlFor="email">
             Email
           </label>
           <input
-            className="input "
+            className="input input-border input-primary w-full"
             placeholder=" Email address"
             type="email"
             name="email"
             id="email"
           />
-          <label className="block" htmlFor="phone">
+          <label className="label uppercase" htmlFor="phone">
             Phone
           </label>
           <input
-            className="input "
+            className="input input-border input-primary w-full "
             type="text"
-            placeholder=" phone number"
+            placeholder=" Phone number"
             name="phone"
             id="phone"
           />
 
-          <label className="block" htmlFor="guardian-name">
+          <label className="label uppercase" htmlFor="guardian-name">
             Guardian Name
           </label>
           <input
-            className="input "
+            className="input input-border input-primary w-full "
             type="text"
-            placeholder=" guardian name"
+            placeholder=" Guardian name"
             name="guardianName"
             id="guardian-name"
           />
-          <label className="block" htmlFor="guardian-phone">
+          <label className="label uppercase" htmlFor="guardian-phone">
             guardian Phone Number
           </label>
           <input
-            className="input "
-            placeholder=" guardian phone"
+            className="input input-border w-full input-primary "
+            placeholder=" Guardian phone"
             type="text"
             name="guardianPhone"
             id="guardian-phone"
           />
-          <label className="block" htmlFor="guardian-email">
+          <label className="label uppercase" htmlFor="Guardian-email">
             guardian Email address
           </label>
           <input
-            className="input "
-            placeholder=" guardian email"
+            className="input input-border w-full input-primary "
+            placeholder=" Guardian email"
             type="email"
             name="guardianEmail"
             id="guardian-email"
           />
-          <label className="block" htmlFor="relationship">
+          <label className="label uppercase" htmlFor="relationship">
             Relations
           </label>
-          <select name="relationship" id="relationship">
+          <select
+            name="relationship"
+            className="select w-full input input-primary"
+            id="relationship"
+          >
             <option> select one</option>
             <option value="mother">Mother</option>
             <option value="father">Father</option>
             <option value="guardian">Guardian</option>
           </select>
-          <label className="block" htmlFor="birth-date">
+          <label className="label uppercase" htmlFor="birth-date">
             Birth Date
           </label>
-          <input type="date" name="birthDate" id="birth-date" />
+
+          <input
+            className="input input-border w-full input-primary "
+            type="date"
+            name="birthDate"
+            id="birth-date"
+          />
           <br />
-          <input type="radio" name="gender" id="male" value="male" />
-          <label htmlFor="male">male</label>
+          <p className="label uppercase">Gender</p>
+          <div className="flex items-center my-3 ">
+            <input
+              className="radio radio-primary "
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+            />
+            <label className="mx-2" htmlFor="male">
+              male
+            </label>
 
-          <input type="radio" name="gender" id="female" value="female" />
-          <label htmlFor="female">Female</label>
+            <input
+              className="radio radio-primary"
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+            />
+            <label className="mx-2" htmlFor="female">
+              Female
+            </label>
 
-          <input type="radio" name="gender" id="other" value="other" />
-          <label htmlFor="other">other</label>
-          <h3 className="text-xl">Institutions</h3>
-          <select name="institution" id="">
+            <input
+              className="radio radio-primary"
+              type="radio"
+              name="gender"
+              id="other"
+              value="other"
+            />
+            <label className="mx-2" htmlFor="other">
+              other
+            </label>
+          </div>
+
+          <h3 className="label uppercase">Institutions</h3>
+          <select
+            className="select w-full input input-primary"
+            name="institution"
+            id=""
+          >
             <option>Select institution</option>
             <option value="school">School</option>
             <option value="collage">Collage</option>
           </select>
-          <label htmlFor="grade"> Grade</label>
-          <input type="number" name="grade" placeholder="Grade" id="grade" />
+          <label className="label uppercase" htmlFor="grade">
+            {" "}
+            Grade
+          </label>
+          <input
+            className="input input-primary w-full "
+            type="number"
+            name="grade"
+            placeholder="Grade"
+            id="grade"
+          />
           <input
             type="submit"
             value="submit"
-            className="btn btn-success block"
+            className="btn btn-primary w-full my-3"
           />
         </form>
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 
 const Event = ({ events, registerId }) => {
+  console.log(events.date);
   return (
     <div className="grid justify-center lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
       {events.map((event) => (
@@ -9,12 +10,21 @@ const Event = ({ events, registerId }) => {
             <img src={event.photos} alt="Shoes" />
           </figure>
           <div class="card-body">
-            <h2 class="card-title">{event.name}</h2>
-            <p>{event.location}</p>
-            <p>{event.description}</p>
-            <p> age Range {event.ageRange}</p>
-            <p>Price money {event.priceMoney}</p>
-
+            <h2 class="card-title uppercase">{event.name}</h2>
+            <p className="uppercase">{event.location}</p>
+            <p className="capitalize">{event.description}</p>
+            <p
+              className="capitalize> age Range {event.ageRange}</p>
+            <p className="
+              capitalize
+            >
+              Price money <span className="font-bold">{event.priceMoney}</span>
+            </p>
+            <p className="">
+              {" "}
+              Dadeline{" "}
+              <span className="bg-red-300 p-2 rounded-full">{event.date}</span>
+            </p>
             <div class="card-actions justify-end">
               <label
                 className="btn"

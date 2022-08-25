@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import useEvent from "../../hooks/useEvent";
+import Banner from "./Banner";
 import Event from "./Event";
 import Modal from "./Modal";
 
@@ -66,8 +67,11 @@ const Home = () => {
           </span>
         </label>
         {/* <!-- Page content here --> */}
+
+        <Banner />
         <h2 className="text-3xl text-center">CHOOSE YOUR EVENT</h2>
         <Event events={events} registerId={registerId} />
+
         <Modal eventId={eventId} />
       </div>
       <div class="drawer-side ">

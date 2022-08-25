@@ -6,25 +6,20 @@ const Profile = () => {
   return (
     <div>
       <div class="drawer drawer-mobile">
-        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col ">
+          <label for="my-drawer" class=" lg:hidden">
+            <span className="text-4xl text-primary btn btn-sm btn-outline fixed z-10">
+              &gt;
+            </span>
+          </label>
           {/* <!-- Page content here --> */}
           <ProfileHeader />
           <Outlet />
-          <label
-            for="my-drawer-2"
-            class="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label>
         </div>
         <div class="drawer-side">
-          <label for="my-drawer-2" class="drawer-overlay"></label>
+          <label for="my-drawer" class="drawer-overlay"></label>
           <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-            {/* <!-- Sidebar content here --> */}
-            {/* <li>
-              <NavLink to="/profile">Profile</NavLink>
-            </li> */}
             <li>
               <NavLink to="/profile/events">events</NavLink>
             </li>
