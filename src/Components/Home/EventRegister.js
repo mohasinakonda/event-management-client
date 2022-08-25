@@ -32,7 +32,7 @@ const EventRegister = ({ eventId }) => {
       grade,
       isRegister: true,
     };
-    fetch("http://localhost:8000/event-register", {
+    fetch("https://limitless-hollows-72000.herokuapp.com/event-register", {
       method: "post",
       headers: {
         "content-type": "application/json",

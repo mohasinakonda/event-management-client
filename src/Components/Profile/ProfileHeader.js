@@ -21,7 +21,7 @@ const ProfileHeader = () => {
   };
   // get userId////////////////////////
   useEffect(() => {
-    fetch(`http://localhost:8000/user/${user?.email}`)
+    fetch(`https://limitless-hollows-72000.herokuapp.com/user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         data.map((info) => setUserInfo(info));
@@ -38,13 +38,16 @@ const ProfileHeader = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        fetch(`http://localhost:8000/user/${userInfo._id}`, {
-          method: "put",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({ profilePic: result.data.url }),
-        }).then((res) => res.json());
+        fetch(
+          `https://limitless-hollows-72000.herokuapp.com/user/${userInfo._id}`,
+          {
+            method: "put",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ profilePic: result.data.url }),
+          }
+        ).then((res) => res.json());
         setProfilePic(result.data.url);
       })
       .catch((error) => {
@@ -62,13 +65,16 @@ const ProfileHeader = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        fetch(`http://localhost:8000/user/${userInfo._id}`, {
-          method: "put",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({ coverPic: result.data.url }),
-        })
+        fetch(
+          `https://limitless-hollows-72000.herokuapp.com/user/${userInfo._id}`,
+          {
+            method: "put",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ coverPic: result.data.url }),
+          }
+        )
           .then((res) => res.json())
           .then((data) => console.log(data));
         setCoverPic(result.data.url);

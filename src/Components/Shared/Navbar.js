@@ -10,7 +10,7 @@ const Navbar = () => {
     signOut(auth);
   };
   return (
-    <div class="navbar ">
+    <div class="navbar bg-indigo-100">
       <div class="flex-1">
         <Link to="/" class=" text-3xl" alt=""></Link>
       </div>
@@ -29,7 +29,7 @@ const Navbar = () => {
 
           <li>
             {!user ? (
-              <Link to="/login">login</Link>
+              <Link to="/login">Login</Link>
             ) : (
               <button onClick={handleLogOut}>Logout</button>
             )}

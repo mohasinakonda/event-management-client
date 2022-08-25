@@ -15,7 +15,7 @@ const Home = () => {
   const [result, setResult] = useState([]);
   const [eventId, setEventId] = useState("");
   useEffect(() => {
-    fetch("http://localhost:8000/product")
+    fetch("https://limitless-hollows-72000.herokuapp.com/product")
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);
@@ -30,7 +30,7 @@ const Home = () => {
   const selectByCity = (event) => {
     const city = event.target.value;
     setCity(city);
-    fetch(`http://localhost:8000/product/${city}`)
+    fetch(`https://limitless-hollows-72000.herokuapp.com/product/${city}`)
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);

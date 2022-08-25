@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useInsertionEffect, useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
+  useSendEmailVerification,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.config";
-// import auth from "../../firebase.config";
-// import useToken from "../../hooks/useToken";
-// import Spinner from "../Shared/Spinner";
 
 const Register = () => {
   const [updateProfile, updating, err] = useUpdateProfile(auth);
   const navigate = useNavigate();
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [sendEmailVerification, sending] = useSendEmailVerification(auth);
 
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
@@ -30,11 +30,12 @@ const Register = () => {
   if (user) {
     navigate("/");
   }
-
-  let errors;
+  if (sending) {
+    return toast("verification send");
+  }
   if (error) {
-    errors = error?.message;
-    return <div>{errors}</div>;
+    const errors = error?.message;
+    return toast.error(errors);
   }
   const handleRegister = async (event) => {
     event.preventDefault();
@@ -44,8 +45,9 @@ const Register = () => {
     const userInfo = { username: name, email };
     await updateProfile({ displayName: name });
     await createUserWithEmailAndPassword(email, password);
+    await sendEmailVerification();
 
-    fetch(`http://localhost:8000/user/`, {
+    fetch(`https://limitless-hollows-72000.herokuapp.com/user/`, {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -92,6 +94,7 @@ const Register = () => {
             />
             <input type="submit" value="submit" className="btn btn-secondary" />
           </form>
+
           <p className="p-5">
             Already have an account ?{" "}
             <Link to="/login" className="text-primary ">

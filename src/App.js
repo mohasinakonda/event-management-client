@@ -11,6 +11,10 @@ import Events from "./Components/Profile/Events";
 import Profile from "./Components/Profile/Profile";
 import UpdateProfile from "./Components/Profile/UpdateProfile";
 import Navbar from "./Components/Shared/Navbar";
+// toastify css
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -51,6 +55,7 @@ function App() {
           <Route path="/login/register" element={<Register />}></Route>
         </Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }
