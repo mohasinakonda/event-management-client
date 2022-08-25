@@ -66,7 +66,7 @@ const Home = () => {
           </span>
         </label>
         {/* <!-- Page content here --> */}
-        <h2 className="text-3xl text-center">CHOOSE YOUR EVENTS</h2>
+        <h2 className="text-3xl text-center">CHOOSE YOUR EVENT</h2>
         <Event events={events} registerId={registerId} />
         <Modal eventId={eventId} />
       </div>
